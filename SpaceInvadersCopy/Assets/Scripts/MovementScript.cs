@@ -16,11 +16,11 @@ public class MovementScript : MonoBehaviour
     {
         float horizontalInput = Input.GetAxis("Horizontal");
         transform.Translate(Vector2.right * Time.deltaTime * speed * horizontalInput);
-        if (transform.position.x > 10)
+        if (transform.position.x > 9)
         {
             transform.position = new Vector2(9, transform.position.y);
         }
-        if (transform.position.x < -10)
+        if (transform.position.x < -9)
         {
             transform.position = new Vector2(-9, transform.position.y);
         }
