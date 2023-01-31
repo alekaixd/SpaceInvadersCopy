@@ -1,10 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class MovementScript : MonoBehaviour
 {
-    private float speed = 8.0f;
+    private float speed = 14.0f;
+    [SerializeField] private GameObject bulletPrefab;
+    private bool isBulletSpawnable = true;
     // Start is called before the first frame update
     void Start()
     {
@@ -24,5 +27,28 @@ public class MovementScript : MonoBehaviour
         {
             transform.position = new Vector2(-9, transform.position.y);
         }
+        if (Input.GetButton("Jump"))
+        {
+            speed = 10.0f;
+            if (isBulletSpawnable == true)
+            {
+                StartCoroutine(SpawnBullet(0.3f));
+            }
+        }
+        else
+        {
+            speed = 14.0f;
+        }
     }
+
+    private IEnumerator SpawnBullet(float seconds)
+    {
+        isBulletSpawnable = false;
+        Instantiate(bulletPrefab, transform.position, transform.rotation);
+        yield return new WaitForSeconds(seconds);
+        isBulletSpawnable = true;
+        
+    }
+
+     
 }
