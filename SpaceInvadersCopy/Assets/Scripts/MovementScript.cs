@@ -7,6 +7,7 @@ public class MovementScript : MonoBehaviour
 {
     private float speed = 14.0f;
     [SerializeField] private GameObject bulletPrefab;
+    [SerializeField] private Rigidbody2D rb;
     private bool isBulletSpawnable = true;
     // Start is called before the first frame update
     void Start()
