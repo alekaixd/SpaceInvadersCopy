@@ -9,6 +9,7 @@ public class GameManager : MonoBehaviour
     public int newScore;
     private float scoreSpeed = 0.001f;
     private float nextScore = 0.0f;
+    public bool gameOver = false;
 
     [SerializeField] private Text scoreText;
     // Start is called before the first frame update
@@ -26,6 +27,11 @@ public class GameManager : MonoBehaviour
             nextScore = Time.time + scoreSpeed;
             UpdateScore();
             scoreText.text = "Score: " + newScore.ToString();
+        }
+
+        if (gameOver == true)
+        {
+            Debug.Log("GameOver!");
         }
     }
     

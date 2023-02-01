@@ -154,6 +154,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   score: 0
   newScore: 0
+  gameOver: 0
   scoreText: {fileID: 946498886}
 --- !u!4 &456652350
 Transform:
@@ -389,10 +390,10 @@ RectTransform:
   m_Father: {fileID: 521131173}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 326.5852, y: 174.78738}
-  m_SizeDelta: {x: 192.0296, y: 57.2252}
+  m_AnchorMin: {x: 1, y: 1}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: -96.015, y: -28.613}
+  m_SizeDelta: {x: 192.0296, y: 57.22519}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &946498885
 MonoBehaviour:
@@ -442,7 +443,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Score:'
+  m_Text: 'Score: 0'
 --- !u!222 &946498887
 CanvasRenderer:
   m_ObjectHideFlags: 0
