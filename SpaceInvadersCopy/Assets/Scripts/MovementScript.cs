@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class MovementScript : MonoBehaviour
 {
-    private float speed = 14.0f;
+    private float speed = 12.0f;
     [SerializeField] private GameObject bulletPrefab;
     [SerializeField] private Rigidbody2D rb;
     private bool isBulletSpawnable = true;
@@ -19,7 +19,7 @@ public class MovementScript : MonoBehaviour
     void Update()
     {
         float horizontalInput = Input.GetAxis("Horizontal");
-        transform.Translate(Vector2.right * Time.deltaTime * speed * horizontalInput);
+        rb.velocity = new Vector2 (horizontalInput, 0) * speed;
         if (transform.position.x > 9)
         {
             transform.position = new Vector2(9, transform.position.y);
@@ -30,7 +30,7 @@ public class MovementScript : MonoBehaviour
         }
         if (Input.GetButton("Jump"))
         {
-            speed = 10.0f;
+            speed = 7.0f;
             if (isBulletSpawnable == true)
             {
                 StartCoroutine(SpawnBullet(0.3f));
