@@ -19,8 +19,10 @@ public class EnemyScript : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        Debug.Log("kill!");
+        gameManager.score += 200;
         Destroy(gameObject);
         Destroy(collision.gameObject);
-        gameManager.UpdateScore(200);
+        
     }
 }
