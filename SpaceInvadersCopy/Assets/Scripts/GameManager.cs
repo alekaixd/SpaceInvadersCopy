@@ -1,11 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SocialPlatforms.Impl;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
-    public int Score;
+    public int score;
+    public int newScore;
+    private float scoreSpeed = 0.001f;
+    private float nextScore = 0.0f;
+
+    [SerializeField] private Text scoreText;
     // Start is called before the first frame update
     void Start()
     {
@@ -15,23 +20,21 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        //Debug.Log("Score is: " + newScore);
+        if(newScore != score && Time.time > nextScore)
+        {
+            nextScore = Time.time + scoreSpeed;
+            UpdateScore();
+            scoreText.text = "Score: " + newScore.ToString();
+        }
     }
     
-    public void UpdateScore(int scoreToAdd)
+    public void UpdateScore()
     {
-        int oldScore = Score;
-        while (oldScore < oldScore + scoreToAdd)
+        if (newScore != score && score > newScore)
         {
-            Score++;
-            StartCoroutine(ScoreCountCooldown(0.1f));
-            Debug.Log(Score);
-            //update score board
+            newScore += 1;
         }
     }
 
-    private IEnumerator ScoreCountCooldown(float seconds)
-    {
-        yield return new WaitForSeconds(seconds);
-    }
 }
