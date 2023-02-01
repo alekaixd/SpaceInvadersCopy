@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class EnemyScript : MonoBehaviour
 {
+    [SerializeField] private GameManager gameManager;
     // Start is called before the first frame update
     void Start()
     {
@@ -20,5 +21,6 @@ public class EnemyScript : MonoBehaviour
     {
         Destroy(gameObject);
         Destroy(collision.gameObject);
+        gameManager.UpdateScore(200);
     }
 }
