@@ -9,6 +9,8 @@ public class MovementScript : MonoBehaviour
     [SerializeField] private GameObject bulletPrefab;
     [SerializeField] private Rigidbody2D rb;
     private bool isBulletSpawnable = true;
+    [SerializeField] private AudioSource firingSoundEffect;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -45,9 +47,12 @@ public class MovementScript : MonoBehaviour
     private IEnumerator SpawnBullet(float seconds)
     {
         isBulletSpawnable = false;
+        firingSoundEffect.Play();
         Instantiate(bulletPrefab, transform.position, transform.rotation);
+        
         yield return new WaitForSeconds(seconds);
         isBulletSpawnable = true;
+        
         
     }
 
