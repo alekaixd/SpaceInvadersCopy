@@ -11,15 +11,35 @@ public class MovementScript : MonoBehaviour
     private bool isBulletSpawnable = true;
     [SerializeField] private AudioSource firingSoundEffect;
 
+    public Vector2 tempPosition;
+
+    public float horizontalSpeed;
+    public float verticalSpeed;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        tempPosition = transform.position;
     }
 
     // Update is called once per frame
     void Update()
     {
+
+        if (transform.position.y <= -4)
+        {
+            Debug.Log("moi");
+            tempPosition.x += horizontalSpeed;
+            tempPosition.y += verticalSpeed;
+            transform.position = tempPosition;
+
+            //transform.Translate = new Vector2(0, 1);
+
+            //transform.position = new Vector2(0, -4);
+
+        }
+
+
         float horizontalInput = Input.GetAxis("Horizontal");
         rb.velocity = new Vector2 (horizontalInput, 0) * speed;
         if (transform.position.x > 9)
